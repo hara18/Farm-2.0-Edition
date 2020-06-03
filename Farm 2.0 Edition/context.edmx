@@ -1,0 +1,557 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище contextModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="idCompetitionStatus" />
+          </Key>
+          <Property Name="idCompetitionStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompetitionName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CompetitionPrize" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompetitionType" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CompetitionCountry" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Horses">
+          <Key>
+            <PropertyRef Name="idHorse" />
+          </Key>
+          <Property Name="idHorse" Type="int" Nullable="false" />
+          <Property Name="HorseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HorseAge" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="HorseGender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HorseBreed" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idStaff" Type="int" />
+          <Property Name="idSellingStatus" Type="int" />
+          <Property Name="idCompetitionStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SellingStatus">
+          <Key>
+            <PropertyRef Name="idSellingStatus" />
+          </Key>
+          <Property Name="idSellingStatus" Type="int" Nullable="false" />
+          <Property Name="SellingStatusName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="idTrade" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="idStaff" />
+          </Key>
+          <Property Name="idStaff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffLogin" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="StaffPassword" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="StaffName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StaffSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="StaffGender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="idRole" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Trading">
+          <Key>
+            <PropertyRef Name="idTrade" />
+          </Key>
+          <Property Name="idTrade" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="TradeDateTime" Type="datetime" Nullable="false" />
+          <Property Name="idStaff" Type="int" Nullable="false" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idHorse" Type="int" Nullable="false" />
+          <Property Name="StaffID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Horses_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
+          <End Role="Horses" Type="Self.Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="idCompetitionStatus" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="idCompetitionStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horses_SellingStatus">
+          <End Role="SellingStatus" Type="Self.SellingStatus" Multiplicity="0..1" />
+          <End Role="Horses" Type="Self.Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellingStatus">
+              <PropertyRef Name="idSellingStatus" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="idSellingStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horses_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Horses" Type="Self.Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellingStatus_Trading">
+          <End Role="Trading" Type="Self.Trading" Multiplicity="0..1" />
+          <End Role="SellingStatus" Type="Self.SellingStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trading">
+              <PropertyRef Name="idTrade" />
+            </Principal>
+            <Dependent Role="SellingStatus">
+              <PropertyRef Name="idTrade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="idRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trading_Horses">
+          <End Role="Horses" Type="Self.Horses" Multiplicity="1" />
+          <End Role="Trading" Type="Self.Trading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horses">
+              <PropertyRef Name="idHorse" />
+            </Principal>
+            <Dependent Role="Trading">
+              <PropertyRef Name="idHorse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trading_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Trading" Type="Self.Trading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Trading">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trading_Staff1">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Trading" Type="Self.Trading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Trading">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище contextModelContainer">
+          <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horses" EntityType="Self.Horses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellingStatus" EntityType="Self.SellingStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trading" EntityType="Self.Trading" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Horses_Competition" Association="Self.FK_Horses_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horses_SellingStatus" Association="Self.FK_Horses_SellingStatus">
+            <End Role="SellingStatus" EntitySet="SellingStatus" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horses_Staff" Association="Self.FK_Horses_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellingStatus_Trading" Association="Self.FK_SellingStatus_Trading">
+            <End Role="Trading" EntitySet="Trading" />
+            <End Role="SellingStatus" EntitySet="SellingStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Role" Association="Self.FK_Staff_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trading_Horses" Association="Self.FK_Trading_Horses">
+            <End Role="Horses" EntitySet="Horses" />
+            <End Role="Trading" EntitySet="Trading" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trading_Staff" Association="Self.FK_Trading_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Trading" EntitySet="Trading" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trading_Staff1" Association="Self.FK_Trading_Staff1">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Trading" EntitySet="Trading" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="contextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="contextEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Competition" EntityType="contextModel.Competition" />
+          <EntitySet Name="Horses" EntityType="contextModel.Horses" />
+          <EntitySet Name="Role" EntityType="contextModel.Role" />
+          <EntitySet Name="SellingStatus" EntityType="contextModel.SellingStatus" />
+          <EntitySet Name="Staff" EntityType="contextModel.Staff" />
+          <EntitySet Name="sysdiagrams" EntityType="contextModel.sysdiagrams" />
+          <EntitySet Name="Trading" EntityType="contextModel.Trading" />
+          <AssociationSet Name="FK_Horses_Competition" Association="contextModel.FK_Horses_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horses_SellingStatus" Association="contextModel.FK_Horses_SellingStatus">
+            <End Role="SellingStatus" EntitySet="SellingStatus" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horses_Staff" Association="contextModel.FK_Horses_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Horses" EntitySet="Horses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trading_Horses" Association="contextModel.FK_Trading_Horses">
+            <End Role="Horses" EntitySet="Horses" />
+            <End Role="Trading" EntitySet="Trading" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Role" Association="contextModel.FK_Staff_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SellingStatus_Trading" Association="contextModel.FK_SellingStatus_Trading">
+            <End Role="Trading" EntitySet="Trading" />
+            <End Role="SellingStatus" EntitySet="SellingStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trading_Staff" Association="contextModel.FK_Trading_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Trading" EntitySet="Trading" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trading_Staff1" Association="contextModel.FK_Trading_Staff1">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Trading" EntitySet="Trading" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="idCompetitionStatus" />
+          </Key>
+          <Property Name="idCompetitionStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompetitionName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CompetitionPrize" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompetitionType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CompetitionCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Horses" Relationship="contextModel.FK_Horses_Competition" FromRole="Competition" ToRole="Horses" />
+        </EntityType>
+        <EntityType Name="Horses">
+          <Key>
+            <PropertyRef Name="idHorse" />
+          </Key>
+          <Property Name="idHorse" Type="Int32" Nullable="false" />
+          <Property Name="HorseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HorseAge" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HorseGender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HorseBreed" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idStaff" Type="Int32" />
+          <Property Name="idSellingStatus" Type="Int32" />
+          <Property Name="idCompetitionStatus" Type="Int32" />
+          <NavigationProperty Name="Competition" Relationship="contextModel.FK_Horses_Competition" FromRole="Horses" ToRole="Competition" />
+          <NavigationProperty Name="SellingStatus" Relationship="contextModel.FK_Horses_SellingStatus" FromRole="Horses" ToRole="SellingStatus" />
+          <NavigationProperty Name="Staff" Relationship="contextModel.FK_Horses_Staff" FromRole="Horses" ToRole="Staff" />
+          <NavigationProperty Name="Trading" Relationship="contextModel.FK_Trading_Horses" FromRole="Horses" ToRole="Trading" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staff" Relationship="contextModel.FK_Staff_Role" FromRole="Role" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="SellingStatus">
+          <Key>
+            <PropertyRef Name="idSellingStatus" />
+          </Key>
+          <Property Name="idSellingStatus" Type="Int32" Nullable="false" />
+          <Property Name="SellingStatusName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="idTrade" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Horses" Relationship="contextModel.FK_Horses_SellingStatus" FromRole="SellingStatus" ToRole="Horses" />
+          <NavigationProperty Name="Trading" Relationship="contextModel.FK_SellingStatus_Trading" FromRole="SellingStatus" ToRole="Trading" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="idStaff" />
+          </Key>
+          <Property Name="idStaff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffLogin" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StaffPassword" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StaffName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StaffSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StaffGender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="idRole" Type="Int32" />
+          <NavigationProperty Name="Horses" Relationship="contextModel.FK_Horses_Staff" FromRole="Staff" ToRole="Horses" />
+          <NavigationProperty Name="Role" Relationship="contextModel.FK_Staff_Role" FromRole="Staff" ToRole="Role" />
+          <NavigationProperty Name="Trading" Relationship="contextModel.FK_Trading_Staff" FromRole="Staff" ToRole="Trading" />
+          <NavigationProperty Name="Trading1" Relationship="contextModel.FK_Trading_Staff1" FromRole="Staff" ToRole="Trading" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Trading">
+          <Key>
+            <PropertyRef Name="idTrade" />
+          </Key>
+          <Property Name="idTrade" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="TradeDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="idStaff" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idHorse" Type="Int32" Nullable="false" />
+          <Property Name="StaffID" Type="Int32" />
+          <NavigationProperty Name="Horses" Relationship="contextModel.FK_Trading_Horses" FromRole="Trading" ToRole="Horses" />
+          <NavigationProperty Name="SellingStatus" Relationship="contextModel.FK_SellingStatus_Trading" FromRole="Trading" ToRole="SellingStatus" />
+          <NavigationProperty Name="Staff" Relationship="contextModel.FK_Trading_Staff" FromRole="Trading" ToRole="Staff" />
+          <NavigationProperty Name="Staff1" Relationship="contextModel.FK_Trading_Staff1" FromRole="Trading" ToRole="Staff" />
+        </EntityType>
+        <Association Name="FK_Horses_Competition">
+          <End Type="contextModel.Competition" Role="Competition" Multiplicity="0..1" />
+          <End Type="contextModel.Horses" Role="Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="idCompetitionStatus" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="idCompetitionStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horses_SellingStatus">
+          <End Type="contextModel.SellingStatus" Role="SellingStatus" Multiplicity="0..1" />
+          <End Type="contextModel.Horses" Role="Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SellingStatus">
+              <PropertyRef Name="idSellingStatus" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="idSellingStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horses_Staff">
+          <End Type="contextModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <End Type="contextModel.Horses" Role="Horses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Horses">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trading_Horses">
+          <End Type="contextModel.Horses" Role="Horses" Multiplicity="1" />
+          <End Type="contextModel.Trading" Role="Trading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horses">
+              <PropertyRef Name="idHorse" />
+            </Principal>
+            <Dependent Role="Trading">
+              <PropertyRef Name="idHorse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Role">
+          <End Type="contextModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="contextModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="idRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SellingStatus_Trading">
+          <End Type="contextModel.Trading" Role="Trading" Multiplicity="0..1" />
+          <End Type="contextModel.SellingStatus" Role="SellingStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trading">
+              <PropertyRef Name="idTrade" />
+            </Principal>
+            <Dependent Role="SellingStatus">
+              <PropertyRef Name="idTrade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trading_Staff">
+          <End Type="contextModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="contextModel.Trading" Role="Trading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Trading">
+              <PropertyRef Name="idStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trading_Staff1">
+          <End Type="contextModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <End Type="contextModel.Trading" Role="Trading" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="idStaff" />
+            </Principal>
+            <Dependent Role="Trading">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище contextModelContainer" CdmEntityContainer="contextEntities">
+          <EntitySetMapping Name="Competition">
+            <EntityTypeMapping TypeName="contextModel.Competition">
+              <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="CompetitionCountry" ColumnName="CompetitionCountry" />
+                <ScalarProperty Name="CompetitionType" ColumnName="CompetitionType" />
+                <ScalarProperty Name="CompetitionPrize" ColumnName="CompetitionPrize" />
+                <ScalarProperty Name="CompetitionName" ColumnName="CompetitionName" />
+                <ScalarProperty Name="idCompetitionStatus" ColumnName="idCompetitionStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horses">
+            <EntityTypeMapping TypeName="contextModel.Horses">
+              <MappingFragment StoreEntitySet="Horses">
+                <ScalarProperty Name="idCompetitionStatus" ColumnName="idCompetitionStatus" />
+                <ScalarProperty Name="idSellingStatus" ColumnName="idSellingStatus" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="HorseBreed" ColumnName="HorseBreed" />
+                <ScalarProperty Name="HorseGender" ColumnName="HorseGender" />
+                <ScalarProperty Name="HorseAge" ColumnName="HorseAge" />
+                <ScalarProperty Name="HorseName" ColumnName="HorseName" />
+                <ScalarProperty Name="idHorse" ColumnName="idHorse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="contextModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellingStatus">
+            <EntityTypeMapping TypeName="contextModel.SellingStatus">
+              <MappingFragment StoreEntitySet="SellingStatus">
+                <ScalarProperty Name="idTrade" ColumnName="idTrade" />
+                <ScalarProperty Name="SellingStatusName" ColumnName="SellingStatusName" />
+                <ScalarProperty Name="idSellingStatus" ColumnName="idSellingStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="contextModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="StaffGender" ColumnName="StaffGender" />
+                <ScalarProperty Name="StaffSurname" ColumnName="StaffSurname" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="StaffPassword" ColumnName="StaffPassword" />
+                <ScalarProperty Name="StaffLogin" ColumnName="StaffLogin" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="contextModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trading">
+            <EntityTypeMapping TypeName="contextModel.Trading">
+              <MappingFragment StoreEntitySet="Trading">
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="idHorse" ColumnName="idHorse" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="idStaff" ColumnName="idStaff" />
+                <ScalarProperty Name="TradeDateTime" ColumnName="TradeDateTime" />
+                <ScalarProperty Name="idTrade" ColumnName="idTrade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

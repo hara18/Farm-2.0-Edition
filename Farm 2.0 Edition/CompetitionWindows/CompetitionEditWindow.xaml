@@ -1,0 +1,75 @@
+﻿<Window x:Class="Farm_2._0_Edition.CompetitionWindows.CompetitionEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Farm_2._0_Edition.CompetitionWindows"
+        mc:Ignorable="d"
+        Title="CompetitionEditWindow" Height="600" Width="400" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen">
+    <Border  CornerRadius="2" BorderBrush="Gainsboro" BorderThickness="0" >
+
+        <Border.Background >
+            <SolidColorBrush Color="#FFDADADA"/>
+
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="64*"/>
+
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Background="White"/>
+            <Label Content="ИЗМЕНИТЬ СОРЕВНОВАНИЕ" FontFamily="Segoe UI Light" FontSize="30" Background="{x:Null}" Foreground="#FF494949" Width="400"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" >
+                <Label.Effect>
+                    <DropShadowEffect BlurRadius="20" Direction="200" RenderingBias="Quality" Opacity="0.2"/>
+                </Label.Effect>
+            </Label>
+            <Label  Content="Название" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="1" Height="36" Margin="0,12" Width="150" FontFamily="Segoe UI Light" />
+            <Label  Content="Приз" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="2" Height="38"  Width="109" Margin="0,11" FontFamily="Segoe UI Light" />
+            <Label  Content="Тип" HorizontalContentAlignment="Right" HorizontalAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="3" Height="38" Margin="0,11" Width="125" FontFamily="Segoe UI Light" />
+            <Label  Content="Страна" HorizontalAlignment="Right"  HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="4" Height="38" Margin="0,11" Width="109" FontFamily="Segoe UI Light" />
+
+
+            <TextBox x:Name="comp_name_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Center" Width="241" Margin="5,20,0,10" Style="{DynamicResource TextBoxStarterStyle}"  />
+            <TextBox x:Name="comp_prize_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="2"  VerticalAlignment="Center" Width="241" Margin="5,19,0,11" Style="{DynamicResource TextBoxStarterStyle}"   />
+
+            <!--<TextBox x:Name="horse_gender_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center" Width="241" Margin="5,19,0,11" Style="{DynamicResource TextBoxStarterStyle}"   />-->
+            <ComboBox x:Name="comp_type_box" Grid.Column="2" FontFamily="Segoe UI Light" Grid.Row="3" Height="30" Width="241" HorizontalAlignment="Left" Margin="5,19,0,11" SelectedIndex="0" FontSize="15">
+                <TextBlock><Run Text="Harness"/></TextBlock>
+                <TextBlock><Run Text="Quarter"/></TextBlock>
+                <TextBlock><Run Text="Show"/></TextBlock>
+                <TextBlock><Run Text="Showjumping"/></TextBlock>
+                <TextBlock><Run Text="Dressage"/></TextBlock>
+
+            </ComboBox>
+            <ComboBox x:Name="comp_country_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="15" Grid.Row="4" SelectedIndex="0" FontFamily="Segoe UI Light"  VerticalAlignment="Center" Width="241" Margin="5,19,0,11"  >
+                <TextBlock><Run Text="Russia"/></TextBlock>
+                <TextBlock><Run Text="USA"/></TextBlock>
+                <TextBlock><Run Text="Germany"/></TextBlock>
+                <TextBlock><Run Text="Japan"/></TextBlock>
+                <TextBlock><Run Text="Italy"/></TextBlock>
+
+            </ComboBox>
+
+            <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="7" Background="White"/>
+            <Button x:Name="comp_edit_but" Width="130" Height="30" Grid.Row="7" Grid.Column="1" Content="Изменить" Margin="0,2,0,0" FontSize="14"
+                       BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyleNonTransparent_ed}"  HorizontalAlignment="Left" Click="comp_edit_but_Click" Background="#FFB8B1B1" Foreground="White"  />
+
+            <Button x:Name="no_but" Width="130" Height="30" Grid.Row="7" Grid.Column="0" Content="Назад" Margin="0,2,0,0" FontSize="14"
+                       BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyleNonTransparent_ed}"  HorizontalAlignment="Right" Background="#FF6A6A6A" Foreground="White" Click="no_but_Click"/>
+
+
+        </Grid>
+    </Border>
+</Window>
