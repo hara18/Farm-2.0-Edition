@@ -49,12 +49,7 @@ namespace Farm_2._0_Edition.TradingWindows
 
         }
 
-        private void edit_trade_butt_Click(object sender, RoutedEventArgs e)
-        {
-            TradingEditWindow tradingEditWindow = new TradingEditWindow();
-            this.Close();
-            tradingEditWindow.ShowDialog();
-        }
+
 
         private void add_trade_butt_Click(object sender, RoutedEventArgs e)
         {

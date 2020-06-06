@@ -51,8 +51,8 @@
                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
                     <Button x:Name="add_trade_butt" Width="200" Height="36" Content="Добавить сделку" Margin="0,0,0,0" Foreground="White" 
                         FontFamily="Segoe UI Semibold" FontSize="18" BorderBrush="{x:Null}" Background="#FF6E6E6E" Style="{DynamicResource ButtonStyleNonTransparent_ed}" Click="add_trade_butt_Click"/>
-                    <Button x:Name="edit_trade_butt" Width="200" Height="36" Content="Редактировать" Margin="0,40,0,0" Foreground="White" 
-                        FontFamily="Segoe UI Semibold" FontSize="18" BorderBrush="{x:Null}" Background="#FF6E6E6E" Style="{DynamicResource ButtonStyleNonTransparent_ed}" Click="edit_trade_butt_Click"/>
+                    <!--<Button x:Name="edit_trade_butt" Width="200" Height="36" Content="Редактировать" Margin="0,40,0,0" Foreground="White" 
+                        FontFamily="Segoe UI Semibold" FontSize="18" BorderBrush="{x:Null}" Background="#FF6E6E6E" Style="{DynamicResource ButtonStyleNonTransparent_ed}" Click="edit_trade_butt_Click"/>-->
                 </StackPanel>
 
             </Grid>

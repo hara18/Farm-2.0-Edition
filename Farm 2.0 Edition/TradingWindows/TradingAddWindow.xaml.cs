@@ -34,6 +34,8 @@ namespace Farm_2._0_Edition.TradingWindows
                 idStaff = staff_trade_box.SelectedIndex,
                 Price = price_trade_box.Text
 
+                
+
 
             });
             context.SaveChanges();

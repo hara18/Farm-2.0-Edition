@@ -25,6 +25,7 @@ namespace Farm_2._0_Edition
         public string CompetitionPrize { get; set; }
         public string CompetitionType { get; set; }
         public string CompetitionCountry { get; set; }
+        public byte[] Photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Horses> Horses { get; set; }

@@ -20,6 +20,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
 
 
                 <RowDefinition Height="40"/>
@@ -40,15 +41,18 @@
             <Label  Content="Пол" HorizontalContentAlignment="Right" HorizontalAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="3" Height="38" Margin="0,11" Width="125" FontFamily="Segoe UI Light" />
             <Label  Content="Порода" HorizontalAlignment="Right"  HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="4" Height="38" Margin="0,11" Width="109" FontFamily="Segoe UI Light" />
             <Label  Content="ID" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="5" Height="36" Margin="0,12" Width="150" FontFamily="Segoe UI Light" />
-            
+            <Image  HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="6" Height="70" Width="140" x:Name="photo_horse"/>
+
+            <Button x:Name="Add_horse_photo" Width="241" Height="30" Content="Добавить фотографию" Margin="5,20,0,10" Foreground="White" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" HorizontalContentAlignment="Center"
+                        FontFamily="Segoe UI Light" FontSize="15" BorderBrush="{x:Null}" Background="#FF6E6E6E"  Style="{DynamicResource ButtonStyleNonTransparent_ed}" Click="Add_horse_photo_Click"/>
             <TextBox x:Name="horse_name_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Center" Width="241" Margin="5,20,0,10" Style="{DynamicResource TextBoxStarterStyle}"  />
             <TextBox x:Name="horse_age_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="2"  VerticalAlignment="Center" Width="241" Margin="5,19,0,11" Style="{DynamicResource TextBoxStarterStyle}"   />
-            <TextBox x:Name="horse_id_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="5"  VerticalAlignment="Center" Width="241" Margin="5,19,0,11" Style="{DynamicResource TextBoxStarterStyle}"   />
+            <TextBox x:Name="horse_id_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="5"  VerticalAlignment="Center" Width="241" Margin="5,19,0,11" Style="{DynamicResource TextBoxStarterStyle}" KeyUp="horse_id_box_KeyUp"   />
             <!--<TextBox x:Name="horse_gender_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center" Width="241" Margin="5,19,0,11" Style="{DynamicResource TextBoxStarterStyle}"   />-->
             <ComboBox x:Name="horse_gender_box" Grid.Column="2" FontFamily="Segoe UI Light" Grid.Row="3" Height="30" Width="241" HorizontalAlignment="Left" Margin="5,19,0,11" SelectedIndex="0" FontSize="15">
-            <TextBlock><Run Text="Mare"/></TextBlock>
-            <TextBlock><Run Text="Stallion"/></TextBlock>
-             
+                <TextBlock><Run Text="Mare"/></TextBlock>
+                <TextBlock><Run Text="Stallion"/></TextBlock>
+
             </ComboBox>
             <ComboBox x:Name="horse_breed_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="15" Grid.Row="4" SelectedIndex="0" FontFamily="Segoe UI Light"  VerticalAlignment="Center" Width="241" Margin="5,19,0,11"  >
                 <TextBlock><Run Text="Orlov Trotter"/></TextBlock>

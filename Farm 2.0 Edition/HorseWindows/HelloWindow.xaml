@@ -96,10 +96,16 @@
                     <DataGrid.Columns>
                    
                     <DataGridTextColumn Header=" Кличка" Width="*" Binding="{Binding HorseName}"/>
-                        <DataGridTextColumn Header="Порода" Width="*" Binding="{Binding HorseBreed}"/>
-                        
+                    <DataGridTemplateColumn Header="Фото" Width="500" MinWidth="500" MaxWidth="500">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path=Photo}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                    </DataGrid.Columns>
+
+                </DataGrid.Columns>
                 </DataGrid>
             <Border Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Background="#FFDADADA"/>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">

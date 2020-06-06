@@ -14,6 +14,7 @@
           <Property Name="CompetitionPrize" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CompetitionType" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="CompetitionCountry" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="image" />
         </EntityType>
         <EntityType Name="Horses">
           <Key>
@@ -27,6 +28,7 @@
           <Property Name="idStaff" Type="int" />
           <Property Name="idSellingStatus" Type="int" />
           <Property Name="idCompetitionStatus" Type="int" />
+          <Property Name="Photo" Type="image" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -56,6 +58,7 @@
           <Property Name="Position" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone" Type="nvarchar" MaxLength="11" />
           <Property Name="idRole" Type="int" />
+          <Property Name="Photo" Type="image" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -269,6 +272,7 @@
           <Property Name="CompetitionPrize" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CompetitionType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="CompetitionCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Horses" Relationship="contextModel.FK_Horses_Competition" FromRole="Competition" ToRole="Horses" />
         </EntityType>
         <EntityType Name="Horses">
@@ -283,6 +287,7 @@
           <Property Name="idStaff" Type="Int32" />
           <Property Name="idSellingStatus" Type="Int32" />
           <Property Name="idCompetitionStatus" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Competition" Relationship="contextModel.FK_Horses_Competition" FromRole="Horses" ToRole="Competition" />
           <NavigationProperty Name="SellingStatus" Relationship="contextModel.FK_Horses_SellingStatus" FromRole="Horses" ToRole="SellingStatus" />
           <NavigationProperty Name="Staff" Relationship="contextModel.FK_Horses_Staff" FromRole="Horses" ToRole="Staff" />
@@ -319,6 +324,7 @@
           <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="idRole" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Horses" Relationship="contextModel.FK_Horses_Staff" FromRole="Staff" ToRole="Horses" />
           <NavigationProperty Name="Role" Relationship="contextModel.FK_Staff_Role" FromRole="Staff" ToRole="Role" />
           <NavigationProperty Name="Trading" Relationship="contextModel.FK_Trading_Staff" FromRole="Staff" ToRole="Trading" />
@@ -454,6 +460,7 @@
           <EntitySetMapping Name="Competition">
             <EntityTypeMapping TypeName="contextModel.Competition">
               <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="CompetitionCountry" ColumnName="CompetitionCountry" />
                 <ScalarProperty Name="CompetitionType" ColumnName="CompetitionType" />
                 <ScalarProperty Name="CompetitionPrize" ColumnName="CompetitionPrize" />
@@ -465,6 +472,7 @@
           <EntitySetMapping Name="Horses">
             <EntityTypeMapping TypeName="contextModel.Horses">
               <MappingFragment StoreEntitySet="Horses">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="idCompetitionStatus" ColumnName="idCompetitionStatus" />
                 <ScalarProperty Name="idSellingStatus" ColumnName="idSellingStatus" />
                 <ScalarProperty Name="idStaff" ColumnName="idStaff" />
@@ -496,6 +504,7 @@
           <EntitySetMapping Name="Staff">
             <EntityTypeMapping TypeName="contextModel.Staff">
               <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="idRole" ColumnName="idRole" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Position" ColumnName="Position" />

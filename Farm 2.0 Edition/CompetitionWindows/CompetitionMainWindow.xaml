@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Farm_2._0_Edition.CompetitionWindows"
         mc:Ignorable="d"
-        Title="CompetitionMainWindow" Height="600" Width="1000" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="CompetitionMainWindow" Height="600" Width="1200" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Border  CornerRadius="2" BorderBrush="Gainsboro" BorderThickness="0" >
 
@@ -40,12 +40,19 @@
                         FontFamily="Segoe UI Semibold" FontSize="18" BorderBrush="{x:Null}" Background="#FF6E6E6E"  Style="{DynamicResource ButtonStyleNonTransparent_ed}" Click="edit_comp_butt_Click"/>-->
                 </StackPanel>
 
-                <DataGrid Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="5" x:Name="competitionList"  FontSize="20" Width="800" HorizontalAlignment="Left" BorderBrush="{x:Null}" IsReadOnly="True" Background="{x:Null}" FontFamily="Segoe UI Semibold" AutoGenerateColumns="False" AlternatingRowBackground="#FFDADADA" Foreground="#FF404040">
+                <DataGrid Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="5" x:Name="competitionList"  FontSize="20" Width="1000" HorizontalAlignment="Left" BorderBrush="{x:Null}" IsReadOnly="True" Background="{x:Null}" FontFamily="Segoe UI Semibold" AutoGenerateColumns="False" AlternatingRowBackground="#FFDADADA" Foreground="#FF404040">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="250" Header="Название соревнования" Binding="{Binding Path=CompetitionName}"></DataGridTextColumn>
-                        <DataGridTextColumn Width="150" Header="Приз" Binding="{Binding Path=CompetitionPrize}"></DataGridTextColumn>
-                        <DataGridTextColumn Width="*" Header="Тип соревнования" Binding="{Binding Path=CompetitionType}"></DataGridTextColumn>
-                        <DataGridTextColumn Width="*" Header="Страна" Binding="{Binding Path=CompetitionCountry}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="300" Header="Название соревнования" Binding="{Binding Path=CompetitionName}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="100" Header="Приз" Binding="{Binding Path=CompetitionPrize}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="160" Header="Тип" Binding="{Binding Path=CompetitionType}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="100" Header="Страна" Binding="{Binding Path=CompetitionCountry}"></DataGridTextColumn>
+                        <DataGridTemplateColumn Header="Фото" Width="320" MinWidth="320" MaxWidth="320">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Path=Photo}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
 

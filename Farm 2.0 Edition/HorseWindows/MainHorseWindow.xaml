@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Farm_2._0_Edition.HorseWindows"
         mc:Ignorable="d"
-        Title="MainHorseWindow" Height="600" Width="1000" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="MainHorseWindow" Height="600" Width="1200" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="Datagrid_Style_Main" TargetType="{x:Type DataGrid}">
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
@@ -92,13 +92,20 @@
                 </Label.Effect>
             </Label>
 
-            <DataGrid Grid.Row="1" x:Name="HorseList" FontSize="20" Width="800" HorizontalAlignment="Left" BorderBrush="{x:Null}" IsReadOnly="True" Background="{x:Null}" FontFamily="Segoe UI Semibold" AutoGenerateColumns="False" AlternatingRowBackground="#FFDADADA" Foreground="#FF404040" Style="{DynamicResource Datagrid_Style_Main}">
+            <DataGrid Grid.Row="1" x:Name="HorseList" FontSize="20" Width="1000" HorizontalAlignment="Left" BorderBrush="{x:Null}" IsReadOnly="True" Background="{x:Null}" FontFamily="Segoe UI Semibold" AutoGenerateColumns="False" AlternatingRowBackground="#FFDADADA" Foreground="#FF404040" Style="{DynamicResource Datagrid_Style_Main}">
                 <DataGrid.Columns>
                     <!--<DataGridTextColumn Header="ID" Width="100" Binding="{Binding idHorse}"/>-->
                     <DataGridTextColumn Header="Кличка" Width="250" Binding="{Binding HorseName}"/>
                     <DataGridTextColumn Header="Порода" Width="200" Binding="{Binding HorseBreed}"/>
                     <DataGridTextColumn Header="Возраст" Width="100" Binding="{Binding HorseAge}"/>
-                    <DataGridTextColumn Header="Пол" Width="200" Binding="{Binding HorseGender}"/>
+                    <DataGridTextColumn Header="Пол" Width="130" Binding="{Binding HorseGender}"/>
+                    <DataGridTemplateColumn Header="Фото" Width="300" MinWidth="300" MaxWidth="300">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path=Photo}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
                 </DataGrid.Columns>
             </DataGrid>

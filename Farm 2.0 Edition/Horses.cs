@@ -28,6 +28,7 @@ namespace Farm_2._0_Edition
         public Nullable<int> idStaff { get; set; }
         public Nullable<int> idSellingStatus { get; set; }
         public Nullable<int> idCompetitionStatus { get; set; }
+        public byte[] Photo { get; set; }
     
         public virtual Competition Competition { get; set; }
         public virtual SellingStatus SellingStatus { get; set; }

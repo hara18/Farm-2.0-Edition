@@ -31,6 +31,7 @@ namespace Farm_2._0_Edition
         public string Position { get; set; }
         public string Phone { get; set; }
         public Nullable<int> idRole { get; set; }
+        public byte[] Photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Horses> Horses { get; set; }

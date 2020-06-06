@@ -7,11 +7,11 @@
       <Diagram DiagramId="db7b63532d6544529914625f7f02272a" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="contextModel.Competition" Width="1.5" PointX="3" PointY="5.625" />
         <EntityTypeShape EntityType="contextModel.Horses" Width="1.5" PointX="5.25" PointY="1.125" />
-        <EntityTypeShape EntityType="contextModel.Role" Width="1.5" PointX="0.75" PointY="2" />
-        <EntityTypeShape EntityType="contextModel.SellingStatus" Width="1.5" PointX="9.75" PointY="1.75" />
+        <EntityTypeShape EntityType="contextModel.Role" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="contextModel.SellingStatus" Width="1.5" PointX="9.75" PointY="1.875" />
         <EntityTypeShape EntityType="contextModel.Staff" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="contextModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
-        <EntityTypeShape EntityType="contextModel.Trading" Width="1.5" PointX="7.5" PointY="1.25" />
+        <EntityTypeShape EntityType="contextModel.Trading" Width="1.5" PointX="7.5" PointY="1.375" />
         <AssociationConnector Association="contextModel.FK_Horses_Competition" />
         <AssociationConnector Association="contextModel.FK_Horses_SellingStatus" />
         <AssociationConnector Association="contextModel.FK_Horses_Staff" />

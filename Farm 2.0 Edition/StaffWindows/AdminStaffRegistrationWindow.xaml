@@ -22,6 +22,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
 
 
 
@@ -45,6 +46,7 @@
             <Label  Content="Телефон" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="5" Height="36" Margin="0,12" Width="150" FontFamily="Segoe UI Light" />
             <Label  Content="Логин" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="6" Height="36" Margin="0,12" Width="150" FontFamily="Segoe UI Light" />
             <Label  Content="Пароль" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="7" Height="36" Margin="0,12" Width="150" FontFamily="Segoe UI Light" />
+            <Image  HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="8" Height="70" Width="140" x:Name="photo_staff"/>
 
 
 
@@ -68,7 +70,8 @@
 
 
             </ComboBox>
-
+            <Button x:Name="Add_staff_photo" Width="241" Height="30" Content="Добавить фотографию" Margin="5,20,0,10" Foreground="White" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Left" HorizontalContentAlignment="Center"
+                        FontFamily="Segoe UI Light" FontSize="15" BorderBrush="{x:Null}" Background="#FF6E6E6E"  Style="{DynamicResource ButtonStyleNonTransparent_ed}" Click="Add_staff_photo_Click"/>
             <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="9" Background="White"/>
             <Button x:Name="reg_staff_but" Width="130" Height="30" Grid.Row="9" Grid.Column="1" Content="Завершить" Margin="0,2,0,0" FontSize="14"
                        BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyleNonTransparent_ed}"  HorizontalAlignment="Left" Click="reg_staff_but_Click" Background="#FFB8B1B1" Foreground="White" />

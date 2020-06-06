@@ -39,7 +39,8 @@
             <Label  Content="Приз" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="2" Height="38"  Width="109" Margin="0,11" FontFamily="Segoe UI Light" />
             <Label  Content="Тип" HorizontalContentAlignment="Right" HorizontalAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="3" Height="38" Margin="0,11" Width="125" FontFamily="Segoe UI Light" />
             <Label  Content="Страна" HorizontalAlignment="Right"  HorizontalContentAlignment="Right" FontSize="20" VerticalAlignment="Center" Grid.Row="4" Height="38" Margin="0,11" Width="109" FontFamily="Segoe UI Light" />
-           
+            <Image  HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="5" Height="70" Width="140" x:Name="photo_comp"/>
+
 
             <TextBox x:Name="comp_name_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Center" Width="241" Margin="5,20,0,10" Style="{DynamicResource TextBoxStarterStyle}"  />
             <TextBox x:Name="comp_prize_box" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontSize="20" Grid.Row="2"  VerticalAlignment="Center" Width="241" Margin="5,19,0,11" Style="{DynamicResource TextBoxStarterStyle}"   />
@@ -68,6 +69,9 @@
 
             <Button x:Name="no_but" Width="130" Height="30" Grid.Row="7" Grid.Column="0" Content="Назад" Margin="0,2,0,0" FontSize="14"
                        BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyleNonTransparent_ed}"  HorizontalAlignment="Right" Background="#FF6A6A6A" Foreground="White" Click="no_but_Click"/>
+
+            <Button x:Name="Add_comp_photo" Width="241" Height="30" Content="Добавить фотографию" Margin="5,20,0,10" Foreground="White" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" HorizontalContentAlignment="Center"
+                        FontFamily="Segoe UI Light" FontSize="15" BorderBrush="{x:Null}" Background="#FF6E6E6E"  Style="{DynamicResource ButtonStyleNonTransparent_ed}" Click="Add_comp_photo_Click" />
 
 
         </Grid>
